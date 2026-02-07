@@ -38,5 +38,7 @@ ESEMPIO DI UTILIZZO
 - Prenotazione di un mezzo da parte di un utente
 - Visualizzazione dello stato dei mezzi
 
+
 CONCLUSIONI
+
 Questo progetto mostra come TypeScript possa essere utilizzato per modellare sistemi reali in modo chiaro, tipizzato e manutenibile, ponendo le basi per applicazioni più complesse e scalabili.
