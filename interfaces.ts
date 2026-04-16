@@ -2,6 +2,7 @@ export interface IMezzo {
     assegnaUtente(utente: IUtente): void,
     liberaMezzo(): void,
     isDisponibile(): boolean;
+    toString(): string;
 };
 
 export type TipoMezzo = "bici" | "scooter" | "monopattino";
