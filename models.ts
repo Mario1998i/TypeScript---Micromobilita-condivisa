@@ -45,15 +45,15 @@ export class Validator {
 export class Mezzo implements IMezzo {
     private id: string;
     private tipo: TipoMezzo;
-    _stato: StatoMezzo;
-    _utenteAssegnato: IUtente | null;
+    private stato: StatoMezzo;
+    private utenteAssegnato: IUtente | null;
 
     constructor(id: string, tipo: TipoMezzo) {
         Validator.validaStringaNonVuota(id, "ID");
         this.id = id;
         this.tipo = tipo;
-        this._stato = "disponibile";
-        this._utenteAssegnato = null;
+        this.stato = "disponibile";
+        this.utenteAssegnato = null;
     }
 
     getId(): string {
@@ -73,11 +73,19 @@ export class Mezzo implements IMezzo {
     }
 
     isDisponibile(): boolean {
-        return this._stato === "disponibile";
+        return this.stato === "disponibile";
     }
 
     toString(): string {
-        return `Mezzo ${this.id} (${this.tipo}) - stato: ${this._stato}`;
+        return `Mezzo ${this.id} (${this.tipo}) - stato: ${this.stato}`;
+    }
+
+    _setStato(stato: StatoMezzo): void {
+        this.stato = stato;
+    }
+
+    _setUtente(utente: IUtente | null): void {
+        this.utenteAssegnato = utente;
     }
 }
 
@@ -87,16 +95,16 @@ export class MezzoService {
             throw new MezzoGiaInUsoError();
         }
 
-        mezzo._utenteAssegnato = utente;
-        mezzo._stato = "in_uso";
+        mezzo._setUtente(utente);
+        mezzo._setStato("in_uso");
     }
 
     static liberaMezzo(mezzo: Mezzo): void {
         if(mezzo.isDisponibile()) {
             throw new MezzoGiaDisponibileError();
         }
-        mezzo._utenteAssegnato = null;
-        mezzo._stato = "disponibile";
+        mezzo._setUtente(null);
+        mezzo._setStato("disponibile");
     }
 }
 

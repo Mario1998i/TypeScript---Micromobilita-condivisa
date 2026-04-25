@@ -18,4 +18,5 @@ export interface ICitta {
     nome: string,
     aggiungiMezzo(mezzo: IMezzo): void;
     getMezziDisponibili(): IMezzo[];
+    stampaStatoMezzi(): void;
 }
