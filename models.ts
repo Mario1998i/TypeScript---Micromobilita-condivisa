@@ -80,10 +80,18 @@ export class Mezzo implements IMezzo {
         return `Mezzo ${this.id} (${this.tipo}) - stato: ${this.stato}`;
     }
 
+/**
+ * Metodo interno usato solo da MezzoService.
+ * Non utilizzare direttamente.
+ */
     _setStato(stato: StatoMezzo): void {
         this.stato = stato;
     }
-
+    
+/**
+ * Metodo interno usato solo da MezzoService.
+ * Non utilizzare direttamente.
+ */
     _setUtente(utente: IUtente | null): void {
         this.utenteAssegnato = utente;
     }
